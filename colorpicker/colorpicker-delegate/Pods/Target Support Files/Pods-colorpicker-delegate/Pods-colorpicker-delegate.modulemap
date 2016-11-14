@@ -1,0 +1,6 @@
+framework module Pods_colorpicker_delegate {
+  umbrella header "Pods-colorpicker-delegate-umbrella.h"
+
+  export *
+  module * { export * }
+}
