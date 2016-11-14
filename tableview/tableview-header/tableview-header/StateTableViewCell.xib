@@ -28,7 +28,7 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="stateLabelName" destination="H2p-sc-9uM" id="vEz-va-IGg"/>
+                <outlet property="stateNameLabel" destination="KRS-fA-8CX" id="9aV-z4-ZiR"/>
             </connections>
             <point key="canvasLocation" x="42.5" y="59.5"/>
         </tableViewCell>

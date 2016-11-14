@@ -10,6 +10,5 @@ import UIKit
 
 class StateTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var stateLabelName: UILabel!
-    
+    @IBOutlet weak var stateNameLabel: UILabel!
 }

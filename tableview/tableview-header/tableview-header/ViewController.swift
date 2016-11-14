@@ -27,7 +27,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: CellIdentifier)
+        let cellNib = UINib(nibName: "StateTableViewCell", bundle: Bundle.main)
+        tableView.register(cellNib, forCellReuseIdentifier: CellIdentifier)
         tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: HeaderViewIdentifier)
     }
     
@@ -36,9 +37,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier, for: indexPath) as! StateTableViewCell
         let citiesInSection = data[indexPath.section].1
-        cell.textLabel?.text = citiesInSection[indexPath.row]
+        cell.stateNameLabel?.text = citiesInSection[indexPath.row]
         return cell
     }
     
