@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -18,7 +18,21 @@ class ViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let colorPickerVC = storyboard.instantiateViewController(withIdentifier: "ColorPicker") as! ColorPickerViewController
         colorPickerVC.initialColor = view.backgroundColor
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: colorPickerVC.ColorPickerNotification), object: nil, queue: OperationQueue.main, using: {(notification: Notification!) -> Void in
+            let userInfo = notification?.userInfo
+            let selectedColor = userInfo?[colorPickerVC.ColorPickerSelectedColorKey] as? UIColor
+            self.didPickColor(color: selectedColor)
+        })
+        
         present(colorPickerVC, animated: true, completion: nil)
+    }
+    
+    func didPickColor(color: UIColor?) {
+        if let selectedColor = color {
+            view.backgroundColor = selectedColor
+        }
+        dismiss(animated: true, completion: nil)
     }
 }
 
